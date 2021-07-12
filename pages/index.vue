@@ -1,14 +1,6 @@
 <template>
-  <div class="app" :class="mode">
-
-    <v-row>
-      <v-col cols="2"></v-col>
-      <v-col cols="2"><h3>Dark Mode</h3></v-col>
-      <v-col cols="1"><Toggle :mode="mode" @toggle="toggle" /></v-col>
-            
-    </v-row>
-
-    <v-row>
+  <div class="app" :class="mode">  
+    <v-row>  
       <v-col cols="8" sm="12" md="8">
         <Post :post="post" v-for="post in posts" :key="post.id"/>
       </v-col>
@@ -16,6 +8,7 @@
         <v-subheader>Recommended Topics</v-subheader>
         <CategoryList :categories="categories" />
       </v-col>
+      <default :mode='mode' @toggle='toggle' />
     </v-row>
   </div>
 </template>
@@ -23,11 +16,12 @@
 <script>
 import Post from '../components/Post'
 import Toggle from '/components/DarkToggle'
-
+import Default from '~/layouts/default.vue'
 export default {
   components: { 
       Post,
-      Toggle 
+      Toggle,
+      Default 
   },
   methods: {
     toggle () {
